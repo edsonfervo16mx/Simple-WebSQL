@@ -18,5 +18,10 @@ function insertarDato(){
     request.executeSql('CREATE TABLE IF NOT EXISTS Productos (codigo unique, producto, precio)');
     request.executeSql('INSERT INTO Productos (codigo, producto, precio) VALUES (?,?,?)',[codigo,producto,precio]);
   });
+}
 
+function deleteDato(codigo){
+  db.transaction(function (request) {
+    request.executeSql('DELETE FROM Productos WHERE codigo = ?',[codigo]);
+  });
 }
